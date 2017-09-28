@@ -23,8 +23,8 @@ class FSM {
      */
     changeState(state) {
         if (this.config.states[state]) {
-            this.states.push(state);
-            this.stateIndex++
+            this.stateIndex++;
+            this.states[this.stateIndex] = state;
         } else {
             throw new Error('Unknown state')
         }
@@ -40,8 +40,8 @@ class FSM {
         const nextState = availableTransitions[event];
 
         if (nextState) {
-            this.states.push(nextState);
-            this.stateIndex++
+            this.stateIndex++;
+            this.states[this.stateIndex] = nextState;
         } else {
             throw new Error('Transition unavailable')
         }
